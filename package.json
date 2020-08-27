@@ -1,0 +1,58 @@
+{
+  "name": "rss",
+  "version": "0.0.1",
+  "description": "RSS news reader",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "type": "module",
+    "webpack": "webpack",
+    "eslint": "eslint .",
+    "start": "webpack-dev-server --open",
+    "webpack-dev-server": "npm run webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kk1rA/rss.git"
+  },
+  "keywords": [
+    "js",
+    "RSS",
+    "agregator",
+    "news"
+  ],
+  "author": "Kirill <klevashov@htsts.ru>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kk1rA/rss/issues"
+  },
+  "homepage": "https://github.com/kk1rA/rss#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.10.5",
+    "@babel/core": "^7.11.4",
+    "@babel/preset-env": "^7.11.0",
+    "@babel/preset-stage-0": "^7.8.3",
+    "babel-eslint": "^10.1.0",
+    "babel-jest": "^26.3.0",
+    "babel-loader": "^8.1.0",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-stage-0": "^6.24.1",
+    "eslint": "^7.7.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.22.0",
+    "eslint-plugin-jest": "^23.20.0",
+    "html-webpack-plugin": "^4.3.0",
+    "jest": "^26.4.2",
+    "jquery": "^3.5.1",
+    "style-loader": "^1.2.1",
+    "webpack": "^4.44.1",
+    "webpack-cli": "^3.3.12",
+    "webpack-dev-server": "^3.11.0",
+    "webpack-serve": "^3.2.0"
+  },
+  "dependencies": {
+    "axios": "^0.20.0",
+    "bootstrap": "^4.5.2",
+    "lodash": "^4.17.20"
+  }
+}
