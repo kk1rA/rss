@@ -7,10 +7,9 @@ const isDev = process.env.NODE_ENV === 'development';
 const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`);
 
 module.exports = {
-  context: path.resolve(__dirname, 'src'),
   mode: 'development',
   entry: {
-    main: './index.js',
+    main: './src/index.js',
   },
   output: {
     filename: filename('js'),
