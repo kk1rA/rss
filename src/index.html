@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>RSS</title>
+    <div class="logo"></div>
+</head>
+<body>
+
+<div class="jumbotron">
+  <form id="feed-add-form" class="needs-validation">
+    <div class="form-group">
+      <label for="feed-url">Simple RSS reader.</label>
+        <input type="text" class="form-control" id="feed-url" placeholder="feed URL" required>
+        <div class="invalid-feedback"></div>
+    </div>
+      <button type="button" class="btn btn-outline-primary">Reed link</button>
+  </form>
+</div>
+
+<div id="feed-url-alerts">
+</div>
+
+<div id="feeds-list">
+    <div id='feed-modals'></div>
+</div>
+
+</body>
+</html>

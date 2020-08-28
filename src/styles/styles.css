@@ -1,0 +1,16 @@
+.jumbotron {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.logo {
+    background-image: url("../assets/logo.jpg");
+    background-size: cover;
+    height: 300px;
+    width: 1200px;
+    margin: 0 auto;
+}

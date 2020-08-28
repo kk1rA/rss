@@ -1,4 +1,8 @@
-// eslint-disable-next-line import/prefer-default-export
-export const sum = (a, b) => {
-  return a + b;
-};
+import './styles/styles.css';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+// import rss from './rss';
+
+// rss();
+
+console.log('fack yea');
