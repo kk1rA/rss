@@ -6,24 +6,38 @@
     <div class="logo"></div>
 </head>
 <body>
-
-<div class="jumbotron">
-  <form id="feed-add-form" class="needs-validation">
-    <div class="form-group">
-      <label for="feed-url">Simple RSS reader.</label>
-        <input type="text" class="form-control" id="feed-url" placeholder="feed URL" required>
-        <div class="invalid-feedback"></div>
+<div class="container-fluid min-vh-100 d-flex flex-column">
+    <div class="row bg-secondary">
+        <div class="jumbotron-fluid container-fluid p-5 bg-secondary text-white">
+            <h1 class="display-4">RSS reader</h1>
+            <p class="lead">This is a simple RSS reader.</p>
+            <div class="row">
+                <div class="col-md-11 col-lg-7">
+                    <div class="input-group mb-3">
+                        <input type="text" id="feed-input" class="form-control" placeholder="RSS feed URL" aria-label="RSS feed URL" aria-describedby="button-addon2">
+                        <a class="btn btn-primary" href="#" role="button">Link it</a>
+                    </div>
+                    <div id="alert"></div>
+                </div>
+                <div class="col-1 invisible" id="loading-icon">
+                    <span class="spinner-border spinner-border-md text-white" role="status" aria-hidden="true"></span>
+                    <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+        </div>
     </div>
-      <button type="button" class="btn btn-outline-primary">Reed link</button>
-  </form>
+    <div class="row px-5 py-4">
+        <div class="col px-0" id="feeds"></div>
+    </div>
+    <footer class="row bg-secondary mt-auto">
+        <div class="col">
+            <p class="text-center mb-0 py-3">
+                <a href="https://github.com/kk1rA" class="text-white" target="_blank">kk1Ra</a>
+            </p>
+        </div>
+    </footer>
 </div>
-
-<div id="feed-url-alerts">
-</div>
-
-<div id="feeds-list">
-    <div id='feed-modals'></div>
-</div>
-
+<!-- Modal -->
+<div id="modalContainer"></div>
 </body>
 </html>
