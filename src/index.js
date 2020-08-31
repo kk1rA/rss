@@ -1,4 +1,3 @@
-import './styles/styles.css';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import rss from './rss';
