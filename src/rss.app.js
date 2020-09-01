@@ -1,5 +1,3 @@
-/* eslint no-param-reassign: ["error", { "props": false }] */
-
 import { watch } from 'melanke-watchjs';
 import axios from 'axios';
 import $ from 'jquery';
