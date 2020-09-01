@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-extraneous-dependencies
 import isURL from 'validator/lib/isURL';
 
 export default ({ input, feeds }) => {
