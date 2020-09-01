@@ -9,7 +9,7 @@ import {
 } from './renderers';
 
 export default () => {
-  const state = {
+  const states = {
     formState: '',
     input: '',
     feeds: [],
@@ -22,29 +22,21 @@ export default () => {
   const button = document.getElementById('button-addon2');
   const loading = document.getElementById('loading-icon');
   const alert = document.getElementById('alert');
-  const cors = 'https://cors-anywhere.herokuapp.com/';
+  const proxi = 'https://cors-anywhere.herokuapp.com/';
 
   const formStateMethods = {
     valid() {
       input.classList.remove('is-invalid');
       button.removeAttribute('disabled');
     },
-    invalid() {
-      input.classList.add('is-invalid');
-      button.setAttribute('disabled', 'disabled');
-    },
     loading() {
       button.setAttribute('disabled', 'disabled');
       loading.classList.remove('invisible');
     },
-    init() {
-      loading.classList.add('invisible');
-      input.value = '';
-      button.setAttribute('disabled', 'disabled');
-    },
     error() {
       loading.classList.add('invisible');
-      console.log(state.error);
+      // eslint-disable-next-line no-console
+      console.log(states.error);
       alert.innerHTML = renderAlert('Error!');
       setTimeout(() => {
         $('.alert').alert('close');
@@ -52,28 +44,28 @@ export default () => {
     },
   };
 
-  const getLatestItemDate = (items) => maxBy(items, 'pubDate').pubDate;
-
   input.addEventListener('input', ({ target }) => {
-    state.input = target.value;
-    state.formState = isValid(state) ? 'valid' : 'invalid';
+    states.input = target.value;
+    states.formState = isValid(states) ? 'valid' : 'invalid';
   });
 
+  const getLatestItemDate = (items) => maxBy(items, 'pubDate').pubDate;
+
   button.addEventListener('click', () => {
-    const feed = state.input;
-    state.formState = 'loading';
-    axios.get(`${cors}${feed}`)
+    const feed = states.input;
+    states.formState = 'loading';
+    axios.get(`${proxi}${feed}`)
       .then((response) => {
         const parsedChannel = parseChannel(response.data);
         parsedChannel.channelFeed = response.config.url;
         parsedChannel.latestItemDate = getLatestItemDate(parsedChannel.items);
-        state.channels.push(parsedChannel);
-        state.feeds.push(feed);
-        state.formState = 'init';
+        states.channels.push(parsedChannel);
+        states.feeds.push(feed);
+        states.formState = 'init';
       })
       .catch((error) => {
-        state.error = error;
-        state.formState = 'error';
+        states.error = error;
+        states.formState = 'error';
       });
   });
 
@@ -86,21 +78,22 @@ export default () => {
 
   const getNewChannelItems = ({ items }, i) => {
     const latestItemDate = getLatestItemDate(items);
-    const channel = state.channels[i];
+    const channel = states.channels[i];
     if (latestItemDate <= channel.latestItemDate) {
       return [];
     }
     const newChannelItems = items.filter(({ pubDate }) => (
       pubDate > channel.latestItemDate));
     newChannelItems.forEach((item) => {
+      // eslint-disable-next-line no-param-reassign
       item.channelId = channel.channelId;
     });
-    state.channels[i].latestItemDate = latestItemDate;
+    states.channels[i].latestItemDate = latestItemDate;
     return newChannelItems;
   };
 
   const updateChannels = () => {
-    const { channels } = state;
+    const { channels } = states;
     const requests = channels.map(({ channelFeed }) => axios.get(channelFeed));
     axios.all(requests)
       .then((responses) => {
@@ -108,30 +101,30 @@ export default () => {
         const newItems = newChannels.map(getNewChannelItems);
         const itemsToUpdate = flatten(newItems);
         if (itemsToUpdate.length > 0) {
-          state.toUpdate = itemsToUpdate;
+          states.toUpdate = itemsToUpdate;
         }
       })
       .catch((error) => {
-        state.error = error;
-        state.formState = 'error';
+        states.error = error;
+        states.formState = 'error';
       })
       .finally(() => setTimeout(updateChannels, 5000));
   };
 
-  watch(state, 'formState', () => {
-    formStateMethods[state.formState]();
+  watch(states, 'formState', () => {
+    formStateMethods[states.formState]();
   });
 
-  watch(state, 'feeds', () => {
-    renderList(state);
-    renderModal(state);
+  watch(states, 'feeds', () => {
+    renderList(states);
+    renderModal(states);
     $('.fadeIn').fadeIn('slow');
   });
 
-  watch(state, 'toUpdate', () => {
-    renderUpdate(state);
+  watch(states, 'toUpdate', () => {
+    renderUpdate(states);
     $('.fadeIn').fadeIn('slow');
   });
 
-  updateChannels(state);
+  updateChannels(states);
 };
