@@ -1,7 +1,7 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import rss from './rss';
+import rss from './rss.app';
 
-// rss();
+rss();
 
 console.log('fack yea');

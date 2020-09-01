@@ -3,19 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <title>RSS</title>
-    <div class="logo"></div>
 </head>
 <body>
 <div class="container-fluid min-vh-100 d-flex flex-column">
     <div class="row bg-secondary">
         <div class="jumbotron-fluid container-fluid p-5 bg-secondary text-white">
             <h1 class="display-4">RSS reader</h1>
-            <p class="lead">This is a simple RSS reader.</p>
             <div class="row">
                 <div class="col-md-11 col-lg-7">
                     <div class="input-group mb-3">
-                        <input type="text" id="feed-input" class="form-control" placeholder="RSS feed URL" aria-label="RSS feed URL" aria-describedby="button-addon2">
-                        <a class="btn btn-primary" href="#" role="button">Link it</a>
+                        <input type="text" id="feed-input" class="form-control" placeholder="RSS feed URL" aria-label="paste URL" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-light" type="button" id="button-addon2" disabled>link it</button>
                     </div>
                     <div id="alert"></div>
                 </div>
@@ -32,7 +30,7 @@
     <footer class="row bg-secondary mt-auto">
         <div class="col text-center mb-0 py-3">
             created by
-                <a href="https://github.com/kk1rA" class="text-white" target="_blank">kk1rA</a>
+            <a href="https://github.com/kk1rA" class="text-white" target="_blank">kk1rA</a>
         </div>
     </footer>
 </div>
