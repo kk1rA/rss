@@ -1,3 +1,5 @@
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import { watch } from 'melanke-watchjs';
 import axios from 'axios';
 import $ from 'jquery';
@@ -20,9 +22,8 @@ export default () => {
 
   const input = document.getElementById('feed-input');
   const button = document.getElementById('button-addon2');
-  const loading = document.getElementById('loading-icon');
   const alert = document.getElementById('alert');
-  const proxi = 'https://cors-anywhere.herokuapp.com/';
+  const proxy = 'https://cors-anywhere.herokuapp.com/';
 
   const formStateMethods = {
     valid() {
@@ -31,16 +32,15 @@ export default () => {
     },
     loading() {
       button.setAttribute('disabled', 'disabled');
-      loading.classList.remove('invisible');
     },
+    // отлавливаем ошибку + тригер на закртие + сама ошибка в консоль
     error() {
-      loading.classList.add('invisible');
       // eslint-disable-next-line no-console
       console.log(states.error);
-      alert.innerHTML = renderAlert('Error!');
+      alert.innerHTML = renderAlert('Wrong link..Try again');
       setTimeout(() => {
         $('.alert').alert('close');
-      }, 7000);
+      }, 5000);
     },
   };
 
@@ -54,7 +54,7 @@ export default () => {
   button.addEventListener('click', () => {
     const feed = states.input;
     states.formState = 'loading';
-    axios.get(`${proxi}${feed}`)
+    axios.get(`${proxy}${feed}`)
       .then((response) => {
         const parsedChannel = parseChannel(response.data);
         parsedChannel.channelFeed = response.config.url;

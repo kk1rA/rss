@@ -7,19 +7,22 @@
 <body>
 <div class="container-fluid min-vh-100 d-flex flex-column">
     <div class="row bg-secondary">
-        <div class="jumbotron-fluid container-fluid p-5 bg-secondary text-white">
+        <div class="jumbotron-fluid container-fluid p-3 bg-dark text-white">
             <h1 class="display-4">RSS reader</h1>
+            <small>
+                <strong>
+                    <em>
+                        <p class="text-warning">Try one of this link for example: "https://ru.hexlet.io/lessons.rss" or  "http://lenta.ru/rss"</p>
+                    </em>
+                </strong>
+            </small>
             <div class="row">
                 <div class="col-md-11 col-lg-7">
-                    <div class="input-group mb-3">
-                        <input type="text" id="feed-input" class="form-control" placeholder="RSS feed URL" aria-label="paste URL" aria-describedby="button-addon2">
-                        <button class="btn btn-outline-light" type="button" id="button-addon2" disabled>link it</button>
+                    <div class="input-group mb-5">
+                        <input type="text" id="feed-input" class="form-control" placeholder="feed URL" aria-label="paste URL" aria-describedby="button-addon2">
+                        <button class="btn btn-outline-warning" type="button" id="button-addon2" >Tap on me</button>
                     </div>
                     <div id="alert"></div>
-                </div>
-                <div class="col-1 invisible" id="loading-icon">
-                    <span class="spinner-border spinner-border-md text-white" role="status" aria-hidden="true"></span>
-                    <span class="sr-only">Loading...</span>
                 </div>
             </div>
         </div>
@@ -27,14 +30,14 @@
     <div class="row px-5 py-4">
         <div class="col px-0" id="feeds"></div>
     </div>
-    <footer class="row bg-secondary mt-auto">
-        <div class="col text-center mb-0 py-3">
-            created by
-            <a href="https://github.com/kk1rA" class="text-white" target="_blank">kk1rA</a>
-        </div>
-    </footer>
 </div>
 <!-- Modal -->
 <div id="modalContainer"></div>
 </body>
+<footer class="row bg-dark mt-auto">
+    <div class="col text-center text-white mb-0 py-3">
+        created by
+        <a href="https://github.com/kk1rA" class="text-success" target="_blank">kk1rA</a>
+    </div>
+</footer>
 </html>
