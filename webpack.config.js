@@ -2,17 +2,13 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-const isDev = process.env.NODE_ENV === 'development';
-
-const filename = (ext) => (isDev ? `[name].${ext}` : `[name].[hash].${ext}`);
-
 module.exports = {
-  mode: 'development',
+  mode: process.env.NODE_ENV || 'development',
   entry: {
     main: './src/index.js',
   },
   output: {
-    filename: filename('js'),
+    filename: '[name].[contenthash].js',
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
@@ -22,7 +18,10 @@ module.exports = {
     new CleanWebpackPlugin(),
   ],
   devServer: {
+    contentBase: path.join(__dirname, 'dist'),
+    compress: true,
     port: 4200,
+    open: true,
   },
   module: {
     rules: [
@@ -32,10 +31,6 @@ module.exports = {
         use: {
           loader: 'babel-loader',
         },
-      },
-      {
-        test: /\.(png|jpg|gif|svg)$/,
-        use: ['file-loader'],
       },
       {
         test: /\.css$/,
