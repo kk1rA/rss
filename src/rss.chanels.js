@@ -6,6 +6,7 @@ export const getLatestItemDate = (items) => maxBy(items, 'pubDate').pubDate;
 
 const getNewChannelItems = ({ items }, i) => {
   const latestItemDate = getLatestItemDate(items);
+  // eslint-disable-next-line no-undef
   const channel = states.channels[i];
   if (latestItemDate <= channel.latestItemDate) {
     return [];
@@ -16,6 +17,7 @@ const getNewChannelItems = ({ items }, i) => {
     // eslint-disable-next-line no-param-reassign
     item.channelId = channel.channelId;
   });
+  // eslint-disable-next-line no-undef
   states.channels[i].latestItemDate = latestItemDate;
   return newChannelItems;
 };
@@ -29,11 +31,14 @@ export const updateChannels = (states) => {
       const newItems = newChannels.map(getNewChannelItems);
       const itemsToUpdate = flatten(newItems);
       if (itemsToUpdate.length > 0) {
+        // eslint-disable-next-line no-param-reassign
         states.toUpdate = itemsToUpdate;
       }
     })
-    .catch((error) => {
+    .catch((state, error) => {
+      // eslint-disable-next-line no-param-reassign
       states.error = error;
+      // eslint-disable-next-line no-param-reassign
       states.formState = 'error';
     })
     .finally(() => setTimeout(updateChannels, 5000));
