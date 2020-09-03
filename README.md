@@ -1,4 +1,4 @@
-**_RSS reader. Education project #3._**
+**_RSS reader. Project №3._**
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/7fba2315c8e6ecdd321d/maintainability)](https://codeclimate.com/github/kk1rA/rss/maintainability)
 [![Build Status](https://travis-ci.org/kk1rA/rss.svg?branch=master)](https://travis-ci.org/kk1rA/rss)
